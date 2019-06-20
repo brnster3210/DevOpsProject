@@ -25,9 +25,11 @@ public class HeadlessRun{
 				Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
 				driver.findElement(By.xpath("//h2[contains(text(),'Hello world on TEST MACHINE!')]"));
 				System.out.println("SUCCESS! Navigated to correct webpage.");
+				driver.quit();
 			}
 			catch(Throwable pageNavigationError){
 				System.out.println("FAILED! Webpage having issues.");
+				driver.quit();
 				}
 		}
 }
