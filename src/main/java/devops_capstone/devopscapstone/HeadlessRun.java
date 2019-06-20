@@ -12,7 +12,7 @@ import org.testng.Assert;
 public class HeadlessRun{
 		
 		public static void main (String [] args) {
-			System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/DevOpsProject/chromedriver");
 			String expectedUrl = "http://54.175.170.133/";
 			
 			ChromeOptions options = new ChromeOptions();
