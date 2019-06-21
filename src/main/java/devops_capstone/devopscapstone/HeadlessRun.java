@@ -13,7 +13,7 @@ public class HeadlessRun{
 		
 		public static void main (String [] args) {
 			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/chromedriver");
-			String expectedUrl = "http://54.175.170.133/";
+			String expectedUrl = "http://localhost";
 			
 			ChromeOptions options = new ChromeOptions();
             options.addArguments("headless");
