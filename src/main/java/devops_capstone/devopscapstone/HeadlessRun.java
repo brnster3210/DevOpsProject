@@ -16,7 +16,7 @@ public class HeadlessRun{
 			String expectedUrl = "http://172.31.26.86/";
 			
 			ChromeOptions options = new ChromeOptions();
-            options.addArguments("headless");
+            options.addArguments("headless", "no-sandbox");
             options.addArguments("window-size=1200x600");
 			
 			WebDriver driver = new ChromeDriver(options);
