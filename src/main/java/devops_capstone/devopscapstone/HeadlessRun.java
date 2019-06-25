@@ -12,11 +12,11 @@ import org.testng.Assert;
 public class HeadlessRun{
 		
 		public static void main (String [] args) {
-			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/DevOpsProject/chromedriver");
-			String expectedUrl = "http://54.175.170.133/";
+			System.setProperty("webdriver.chrome.driver", "/home/ubuntu/chromedriver");
+			String expectedUrl = "http://172.31.26.86/";
 			
 			ChromeOptions options = new ChromeOptions();
-            options.addArguments("headless");
+            options.addArguments("headless", "no-sandbox");
             options.addArguments("window-size=1200x600");
 			
 			WebDriver driver = new ChromeDriver(options);
