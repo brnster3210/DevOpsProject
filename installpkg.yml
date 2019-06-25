@@ -1,0 +1,45 @@
+
+---
+- name: Package install playbook 
+  hosts: testserver prodserver
+  user: ubuntu
+  sudo: yes
+ 
+  tasks:
+    - name: Create the directory config-management
+      file:
+        path: /home/ubuntu/config-management
+        state: directory
+        mode: "u=rwx,g=rw,o=rw"
+        owner: ubuntu
+        group: ubuntu     
+
+    - name: Create the status.txt file
+      file:
+        path: "/home/ubuntu/config-management/status.txt"
+        state: touch
+        mode: "u=rwx,g=rwx,o=rw"
+        owner: ubuntu
+        group: ubuntu
+       
+    - name: Clean status.txt file
+      shell:  truncate -s 0 status.txt 
+      args: 
+        chdir: /home/ubuntu/config-management/
+        executable: /bin/bash
+
+    - name: Transfer the Script to config-management
+      copy: src=install_pkg.sh dest=/home/ubuntu/config-management/install_pkg.sh mode=0777
+      
+    - name: Execute the script install_pkg
+      script: install_pkg.sh
+      args:
+        chdir: /home/ubuntu/config-management/
+        executable: /bin/bash
+
+    - name: Check if Apache Install Docker Container
+      shell: pgrep apache2
+      ignore_errors: false
+      changed_when: false
+      register: service_apache_status
+      shell: echo dpkg -s   
