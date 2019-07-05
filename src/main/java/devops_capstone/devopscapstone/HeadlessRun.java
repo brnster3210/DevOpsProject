@@ -23,7 +23,7 @@ public class HeadlessRun{
 			driver.get(expectedUrl);
 			try{
 				Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
-				driver.findElement(By.xpath("//h2[contains(text(),'Hello world on TEST MACHINE!')]"));
+				driver.findElement(By.xpath("//h2[contains(text(),'Hello world')]"));
 				System.out.println("SUCCESS! Navigated to correct webpage.");
 				driver.quit();
 			}
